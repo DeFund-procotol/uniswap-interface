@@ -2,7 +2,6 @@ import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useWeb3React } from '@web3-react/core'
 import { getChainInfoOrDefault } from 'constants/chainInfo'
-import { SupportedChainId } from 'constants/chains'
 import { TokensVariant, useTokensFlag } from 'featureFlags/flags/tokens'
 import { darken } from 'polished'
 import { NavLink, useLocation } from 'react-router-dom'
@@ -15,10 +14,9 @@ import { useDarkModeManager } from 'state/user/hooks'
 import styled, { useTheme } from 'styled-components/macro'
 
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
-import { ExternalLink, ThemedText } from '../../theme'
+import { ThemedText } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
 import { CardNoise } from '../earn/styled'
-import Menu from '../Menu'
 import Row from '../Row'
 import { Dots } from '../swap/styleds'
 import Web3Status from '../Web3Status'
@@ -217,32 +215,6 @@ const StyledNavLink = styled(NavLink)`
   }
 `
 
-const StyledExternalLink = styled(ExternalLink)`
-  ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
-  border-radius: 3rem;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: ${({ theme }) => theme.deprecated_text2};
-  font-size: 1rem;
-  width: fit-content;
-  margin: 0 12px;
-  font-weight: 500;
-
-  &.${activeClassName} {
-    border-radius: 14px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.deprecated_text1};
-  }
-
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.deprecated_text1)};
-    text-decoration: none;
-  }
-`
-
 export default function Header() {
   const tokensFlag = useTokensFlag()
 
@@ -265,7 +237,6 @@ export default function Header() {
   const { pathname } = useLocation()
 
   const {
-    infoLink,
     nativeCurrency: { symbol: nativeCurrencySymbol },
   } = getChainInfoOrDefault(chainId)
 
@@ -304,15 +275,6 @@ export default function Header() {
         >
           <Trans>Pool</Trans>
         </StyledNavLink>
-        {(!chainId || chainId === SupportedChainId.MAINNET) && (
-          <StyledNavLink id={`vote-nav-link`} to={'/vote'}>
-            <Trans>Vote</Trans>
-          </StyledNavLink>
-        )}
-        <StyledExternalLink id={`charts-nav-link`} href={infoLink}>
-          <Trans>Charts</Trans>
-          <sup>↗</sup>
-        </StyledExternalLink>
       </HeaderLinks>
 
       <HeaderControls>
@@ -346,9 +308,6 @@ export default function Header() {
             ) : null}
             <Web3Status />
           </AccountElement>
-        </HeaderElement>
-        <HeaderElement>
-          <Menu />
         </HeaderElement>
       </HeaderControls>
     </HeaderFrame>
