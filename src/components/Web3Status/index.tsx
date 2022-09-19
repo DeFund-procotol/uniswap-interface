@@ -221,7 +221,7 @@ function Web3StatusInner() {
     )
   } else if (account) {
     return (
-      <Web3StatusConnected data-testid="web3-status-connected" onClick={toggleWallet} pending={hasPendingTransactions}>
+      <Web3StatusConnected data-testid="web3-status-connected" pending={hasPendingTransactions}>
         {navbarFlagEnabled && !hasPendingTransactions && <StatusIcon size={24} connectionType={connectionType} />}
         {hasPendingTransactions ? (
           <RowBetween>
@@ -256,28 +256,20 @@ function Web3StatusInner() {
       >
         {navbarFlagEnabled ? (
           <Web3StatusConnectNavbar faded={!account}>
-            <StyledConnect data-testid="navbar-connect-wallet" onClick={toggleWalletModal}>
+            <StyledConnect data-testid="navbar-connect-wallet">
               <Trans>Connect</Trans>
             </StyledConnect>
             <VerticalDivider />
             {walletIsOpen ? (
-              <StyledChevronUp
-                data-testid="navbar-wallet-dropdown"
-                customColor={theme.accentAction}
-                onClick={toggleWalletDropdown}
-              />
+              <StyledChevronUp data-testid="navbar-wallet-dropdown" customColor={theme.accentAction} />
             ) : (
-              <StyledChevronDown
-                data-testid="navbar-wallet-dropdown"
-                customColor={theme.accentAction}
-                onClick={toggleWalletDropdown}
-              />
+              <StyledChevronDown data-testid="navbar-wallet-dropdown" customColor={theme.accentAction} />
             )}
           </Web3StatusConnectNavbar>
         ) : (
-          <Web3StatusConnect onClick={linkDecontract} faded={!account}>
+          <Web3StatusConnect faded={!account}>
             <Text>
-              <Trans>Connect Wallet</Trans>
+              <Trans>Connecting...</Trans>
             </Text>
           </Web3StatusConnect>
         )}
