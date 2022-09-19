@@ -2,6 +2,7 @@ import '@reach/dialog/styles.css'
 import 'inter-ui'
 import 'polyfills'
 import 'components/analytics'
+import './index.css'
 
 import { FeatureFlagsProvider } from 'featureFlags'
 import RelayEnvironment from 'graphql/data/RelayEnvironment'
@@ -27,7 +28,6 @@ import TransactionUpdater from './state/transactions/updater'
 import UserUpdater from './state/user/updater'
 import ThemeProvider, { ThemedGlobalStyle } from './theme'
 import RadialGradientByChainUpdater from './theme/RadialGradientByChainUpdater'
-import './index.css'
 
 const queryClient = new QueryClient()
 
