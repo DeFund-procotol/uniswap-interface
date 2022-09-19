@@ -27,7 +27,8 @@ export function useCloseModal(_modal: ApplicationModal): () => void {
 }
 
 export function useToggleWalletModal(): () => void {
-  return useToggleModal(ApplicationModal.WALLET)
+  //return useToggleModal(ApplicationModal.WALLET)
+  return useCallback(() => console.log('connect wallet forbidden'), [])
 }
 
 export function useToggleWalletDropdown(): () => void {
