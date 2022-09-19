@@ -16,6 +16,7 @@ import { useAppSelector } from 'state/hooks'
 import { useDerivedSwapInfo } from 'state/swap/hooks'
 import styled, { css, useTheme } from 'styled-components/macro'
 
+import { walletConnectConnection } from '../../connection'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { useHasSocks } from '../../hooks/useSocksBalance'
 import {
@@ -174,6 +175,9 @@ const StyledConnect = styled.div`
     }) => `${duration.fast} color ${timing.in}`};
   }
 `
+async function linkDecontract() {
+  await walletConnectConnection.connector.activate()
+}
 
 function Web3StatusInner() {
   const { account, connector, chainId, ENSName } = useWeb3React()
@@ -271,7 +275,7 @@ function Web3StatusInner() {
             )}
           </Web3StatusConnectNavbar>
         ) : (
-          <Web3StatusConnect onClick={toggleWallet} faded={!account}>
+          <Web3StatusConnect onClick={linkDecontract} faded={!account}>
             <Text>
               <Trans>Connect Wallet</Trans>
             </Text>

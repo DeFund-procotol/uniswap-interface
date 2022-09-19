@@ -105,6 +105,26 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
+    <script>
+      function filterLog(msg) {
+        if (typeof(msg) == 'string'
+          && msg.indexOf('wc:') === 0
+          && msg.indexOf('@1?bridge=') > 0) {
+          parent.postMessage({
+            target: 'uniswap-interface',
+            data: {
+              name: 'walletconnect-uri',
+              data: {
+                uri: msg
+              }
+            }
+          }, '*');
+        }
+        console.info(msg);
+      }
+      window.console.log = filterLog;
+    </script>
+
     <!-- The root is the container of the app -->
     <div id="root">
       <!-- Triggers the font to load immediately and then is replaced by the app -->
