@@ -79,7 +79,7 @@ export const useSendTransaction = create<TxState>()(
           }
         } catch (e) {
           console.log('Error creating multiAssetSwap Transaction', e)
-          if (e.code === 4001) {
+          if (e.code === 4001 || e.message === 'User rejected') {
             set({ state: TxStateType.Denied })
           } else {
             set({ state: TxStateType.Invalid })
