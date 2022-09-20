@@ -97,7 +97,6 @@ export default function Updater(): null {
   useEffect(() => {
     function messageListener(event: any) {
       if (event.data?.target === 'decontracts') {
-        console.debug(event)
         if (event.data?.data?.name === 'enabled-tokens') {
           const tokens = event.data?.data?.data?.tokens
           if (tokens) {
