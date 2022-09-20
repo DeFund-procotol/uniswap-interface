@@ -43,20 +43,6 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   box-shadow: 0px 0px 0px 1px ${({ theme, showBackground }) => (showBackground ? theme.deprecated_bg2 : 'transparent;')};
   transition: background-position 0.1s, box-shadow 0.1s;
   background-blend-mode: hard-light;
-
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToLarge`
-    grid-template-columns: 48px 1fr 1fr;
-  `};
-
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToMedium`
-    padding:  1rem;
-    grid-template-columns: 1fr 1fr;
-  `};
-
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToSmall`
-    padding:  1rem;
-    grid-template-columns: 36px 1fr;
-  `};
 `
 
 const HeaderControls = styled.div`
@@ -78,10 +64,6 @@ const HeaderElement = styled.div`
   & > *:not(:first-child) {
     margin-left: 8px;
   }
-
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToMedium`
-    align-items: center;
-  `};
 `
 
 const HeaderLinks = styled(Row)`
@@ -95,25 +77,6 @@ const HeaderLinks = styled(Row)`
   grid-gap: 10px;
   overflow: auto;
   align-items: center;
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToLarge`
-    justify-self: start;
-    `};
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToMedium`
-    justify-self: center;
-  `};
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToMedium`
-    flex-direction: row;
-    justify-content: space-between;
-    justify-self: center;
-    z-index: 99;
-    position: fixed;
-    bottom: 0; right: 50%;
-    transform: translate(50%,-50%);
-    margin: 0 auto;
-    background-color: ${({ theme }) => theme.deprecated_bg0};
-    border: 1px solid ${({ theme }) => theme.deprecated_bg2};
-    box-shadow: 0px 6px 10px rgb(0 0 0 / 2%);
-  `};
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
