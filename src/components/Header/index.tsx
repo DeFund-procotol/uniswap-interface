@@ -28,14 +28,12 @@ const HeaderFrame = styled.div<{ showBackground: boolean }>`
   grid-template-columns: 120px 1fr 120px;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
   flex-direction: row;
   width: 100%;
   top: 0;
   position: relative;
   padding: 1rem;
   z-index: 21;
-  position: relative;
   /* Background slide effect on scroll. */
   background-image: ${({ theme }) => `linear-gradient(to bottom, transparent 50%, ${theme.deprecated_bg0} 50% )}}`};
   background-position: ${({ showBackground }) => (showBackground ? '0 -100%' : '0 0')};
@@ -77,6 +75,20 @@ const HeaderLinks = styled(Row)`
   grid-gap: 10px;
   overflow: auto;
   align-items: center;
+  z-index: 100;
+  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToSmall`
+    flex-direction: row;
+    justify-content: space-between;
+    justify-self: center;
+    z-index: 99;
+    position: fixed;
+    bottom: 0; right: 50%;
+    transform: translate(50%,-50%);
+    margin: 0 auto;
+    background-color: ${({ theme }) => theme.deprecated_bg0};
+    border: 1px solid ${({ theme }) => theme.deprecated_bg2};
+    box-shadow: 0px 6px 10px rgb(0 0 0 / 2%);
+  `};
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
@@ -130,9 +142,6 @@ const Title = styled.a`
   pointer-events: auto;
   justify-self: flex-start;
   margin-right: 12px;
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToSmall`
-    justify-self: center;
-  `};
   :hover {
     cursor: pointer;
   }
