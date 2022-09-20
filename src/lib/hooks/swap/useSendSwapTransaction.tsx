@@ -118,6 +118,7 @@ export default function useSendSwapTransaction(
           })
           .catch((error) => {
             // if the user rejected the tx, pass this along
+            console.log(error, error?.code, error?.message)
             if (error?.code === 4001 || error?.message === 'User rejected') {
               throw new Error(t`Transaction rejected`)
             } else {
