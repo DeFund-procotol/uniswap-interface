@@ -3,7 +3,6 @@ import { initializeConnector, Web3ReactHooks } from '@web3-react/core'
 import { GnosisSafe } from '@web3-react/gnosis-safe'
 import { MetaMask } from '@web3-react/metamask'
 import { Network } from '@web3-react/network'
-import { Connector } from '@web3-react/types'
 import { WalletConnect } from '@web3-react/walletconnect'
 import { SupportedChainId } from 'constants/chains'
 
@@ -20,7 +19,7 @@ export enum ConnectionType {
 }
 
 export interface Connection {
-  connector: Connector
+  connector: any
   hooks: Web3ReactHooks
   type: ConnectionType
 }

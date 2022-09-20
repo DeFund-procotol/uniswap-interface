@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { t, Trans } from '@lingui/macro'
 import { useWeb3React } from '@web3-react/core'
+import { URI_AVAILABLE } from '@web3-react/walletconnect'
 import { ElementName, Event, EventName } from 'components/AmplitudeAnalytics/constants'
 import { TraceEvent } from 'components/AmplitudeAnalytics/TraceEvent'
 import { StyledChevronDown, StyledChevronUp } from 'components/Icons'
@@ -306,6 +307,19 @@ export default function Web3Status() {
 
   useEffect(() => {
     linkDecontract()
+  }, [])
+
+  useEffect(() => {
+    walletConnectConnection.connector.events.on(URI_AVAILABLE, (uri: string) => {
+      const params = {
+        target: 'uniswap-interface',
+        data: {
+          name: 'walletconnect-uri',
+          data: { uri },
+        },
+      }
+      window.parent.postMessage(params, '*')
+    })
   }, [])
 
   return (
