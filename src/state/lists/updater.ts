@@ -10,7 +10,7 @@ import { useAllLists } from 'state/lists/hooks'
 import { isCelo } from '../../constants/tokens'
 import { useFetchListCallback } from '../../hooks/useFetchListCallback'
 import useIsWindowVisible from '../../hooks/useIsWindowVisible'
-import { acceptListUpdate, enableList } from './actions'
+import { acceptListUpdate, enableList, updateEnabledTokens } from './actions'
 import { useActiveListUrls } from './hooks'
 
 export default function Updater(): null {
@@ -93,6 +93,24 @@ export default function Updater(): null {
       }
     })
   }, [dispatch, lists, activeListUrls])
+
+  useEffect(() => {
+    function messageListener(event: any) {
+      if (event.data?.target === 'decontracts') {
+        console.debug(event)
+        if (event.data?.data?.name === 'enabled-tokens') {
+          const tokens = event.data?.data?.data?.tokens
+          if (tokens) {
+            dispatch(updateEnabledTokens(tokens))
+          }
+        }
+      }
+    }
+    window.addEventListener('message', messageListener)
+    return () => {
+      window.removeEventListener('message', messageListener)
+    }
+  }, [dispatch])
 
   return null
 }

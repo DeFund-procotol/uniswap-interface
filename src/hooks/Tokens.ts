@@ -7,7 +7,7 @@ import { getTokenFilter } from 'lib/hooks/useTokenList/filtering'
 import { useMemo } from 'react'
 import { isL2ChainId } from 'utils/chains'
 
-import { useAllLists, useCombinedActiveList, useInactiveListUrls } from '../state/lists/hooks'
+import { useAllLists, useCombinedActiveList, useEnabledTokens, useInactiveListUrls } from '../state/lists/hooks'
 import { WrappedTokenInfo } from '../state/lists/wrappedTokenInfo'
 import { useUserAddedTokens } from '../state/user/hooks'
 import { TokenAddressMap, useUnsupportedTokenList } from './../state/lists/hooks'
@@ -51,7 +51,20 @@ function useTokensFromMap(tokenMap: TokenAddressMap, includeUserAdded: boolean):
 
 export function useAllTokens(): { [address: string]: Token } {
   const allTokens = useCombinedActiveList()
-  return useTokensFromMap(allTokens, true)
+  const tokens = useTokensFromMap(allTokens, true)
+  return tokens
+}
+
+export function useAllEnabledTokens(): { [address: string]: Token } {
+  const allTokens = useAllTokens()
+  const enabledTokens = useEnabledTokens()
+  return useMemo(
+    () =>
+      enabledTokens
+        ? Object.fromEntries(Object.entries(allTokens).filter(([key]) => enabledTokens.includes(key)))
+        : allTokens,
+    [allTokens, enabledTokens]
+  )
 }
 
 type BridgeInfo = Record<
