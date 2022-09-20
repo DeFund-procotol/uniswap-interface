@@ -125,6 +125,7 @@ const AccountElement = styled.div<{ active: boolean }>`
   white-space: nowrap;
   width: 100%;
   height: 40px;
+  opacity: 0;
 
   :focus {
     border: 1px solid blue;

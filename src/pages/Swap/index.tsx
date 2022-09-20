@@ -671,7 +671,7 @@ export default function Swap() {
                         element={ElementName.CONNECT_WALLET_BUTTON}
                       >
                         <ButtonLight onClick={toggleWalletModal} redesignFlag={redesignFlagEnabled}>
-                          <Trans>Connect Wallet</Trans>
+                          <Trans>Connecting...</Trans>
                         </ButtonLight>
                       </TraceEvent>
                     ) : showWrap ? (
