@@ -268,7 +268,7 @@ export default function Pool() {
       <>
         <PageWrapper navBarFlag={navBarFlagEnabled}>
           <AutoColumn gap="lg" justify="center">
-            <AutoColumn gap="lg" style={{ width: '100%' }}>
+            <AutoColumn gap="lg" style={{ width: '100%', padding: '8px' }}>
               <TitleRow padding={'0'}>
                 <ThemedText.LargeHeader>
                   <Trans>Pools</Trans>
