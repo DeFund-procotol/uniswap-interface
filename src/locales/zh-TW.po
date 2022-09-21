@@ -118,7 +118,7 @@ msgstr "提交提案所需的最低門檻為 UNI 總供應量的 0.25%"
 
 #: src/components/swap/PriceImpactWarning.tsx
 msgid "A swap of this size may have a high price impact, given the current liquidity in the pool. There may be a large difference between the amount of your input token and what you will receive in the output token"
-msgstr "鑑於池中當前的流動性，這種規模的掉期可能會對價格產生很大影響。您的輸入令牌數量與您將在輸出令牌中收到的數量之間可能存在很大差異"
+msgstr "鑑於池中當前的流動性，這種規模的掉期可能會對價格產生很大影響。您的輸入代币數量與您將在輸出代币中收到的數量之間可能存在很大差異"
 
 #: src/components/Menu/index.tsx
 #: src/components/Tokens/TokenDetails/TokenDetail.tsx
@@ -229,7 +229,7 @@ msgstr "數額"
 
 #: src/components/Tokens/TokenTable/TokenTable.tsx
 msgid "An error occured loading tokens. Please try again."
-msgstr "加載令牌時發生錯誤。請再試一次。"
+msgstr "加載代币時發生錯誤。請再試一次。"
 
 #: src/utils/swapErrorToUserReadableMessage.tsx
 msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
@@ -936,7 +936,7 @@ msgstr "正在獲取最優兌換率..."
 
 #: src/components/Tokens/TokenTable/SearchBar.tsx
 msgid "Filter tokens"
-msgstr "過濾令牌"
+msgstr "過濾代币"
 
 #: src/pages/Vote/VotePage.tsx
 msgid "For"
@@ -1325,15 +1325,15 @@ msgstr "未找到任何結果。"
 
 #: src/components/Tokens/TokenDetails/TokenDetail.tsx
 msgid "No token information available"
-msgstr "沒有可用的令牌信息"
+msgstr "沒有可用的代币信息"
 
 #: src/components/Tokens/TokenTable/TokenTable.tsx
 msgid "No tokens found"
-msgstr "未找到令牌"
+msgstr "未找到代币"
 
 #: src/components/NavBar/SearchBar.tsx
 msgid "No tokens found."
-msgstr "未找到令牌。"
+msgstr "未找到代币。"
 
 #: src/constants/tokenSafety.tsx
 msgid "Not Available"
@@ -1458,7 +1458,7 @@ msgstr "流動池匯集 {0}:"
 #: src/pages/Pool/index.tsx
 #: src/pages/Pool/index.tsx
 msgid "Pools"
-msgstr "游泳池"
+msgstr "流动池"
 
 #: src/components/NavBar/SearchBar.tsx
 msgid "Popular NFT collections"
@@ -1665,7 +1665,7 @@ msgstr "搜索名稱或粘貼地址"
 
 #: src/components/NavBar/SearchBar.tsx
 msgid "Search tokens"
-msgstr "搜索令牌"
+msgstr "搜索代币"
 
 #: src/components/NavBar/SearchBar.tsx
 msgid "Search tokens and NFT collections"
@@ -1697,7 +1697,7 @@ msgstr "選擇操作"
 
 #: src/components/CurrencyInputPanel/SwapCurrencyInputPanel.tsx
 msgid "Select token"
-msgstr "選擇令牌"
+msgstr "選擇代币"
 
 #: src/pages/AddLiquidity/index.tsx
 msgid "Selected Range"
@@ -2018,7 +2018,7 @@ msgstr "到（至少）"
 
 #: src/components/Tokens/TokenTable/TokenRow.tsx
 msgid "Token Name"
-msgstr "令牌名稱"
+msgstr "代币名稱"
 
 #: src/components/SearchModal/BlockedToken.tsx
 msgid "Token not supported"
@@ -2268,7 +2268,7 @@ msgstr "在以太坊資源瀏覽器上查看"
 
 #: src/components/NavBar/MenuDropdown.tsx
 msgid "View token analytics"
-msgstr "查看令牌分析"
+msgstr "查看代币分析"
 
 #: src/components/ModalViews/index.tsx
 #: src/components/claim/AddressClaimModal.tsx
@@ -2669,11 +2669,11 @@ msgstr "從 {0} 代幣列表"
 
 #: src/components/SearchModal/ImportToken.tsx
 msgid "{0, plural, =1 {Import token} other {Import tokens}}"
-msgstr "{0, plural, =1 {導入令牌} other {導入代幣}}"
+msgstr "{0, plural, =1 {導入代币} other {導入代幣}}"
 
 #: src/constants/tokenSafety.tsx
 msgid "{0, plural, =1 {This token isn't verified} other {These tokens aren't verified}}"
-msgstr "{0, plural, =1 {此令牌未經驗證} other {這些令牌未經驗證}}"
+msgstr "{0, plural, =1 {此代币未經驗證} other {這些代币未經驗證}}"
 
 #: src/constants/tokenSafety.tsx
 msgid "{0, plural, =1 {You can't trade this token using the Uniswap App.} other {You can't trade these tokens using the Uniswap App.}}"
@@ -2841,5 +2841,5 @@ msgstr "{tokenB} 每 {tokenA}"
 
 #: src/pages/Pool/PositionPage.tsx
 msgid "← Back to Pools"
-msgstr "← 返回游泳池"
+msgstr "← 返回流动池"
 
