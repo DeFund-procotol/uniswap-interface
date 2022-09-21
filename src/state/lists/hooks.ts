@@ -73,6 +73,11 @@ export function useActiveListUrls(): string[] | undefined {
   return useMemo(() => activeListUrls?.filter((url) => !UNSUPPORTED_LIST_URLS.includes(url)), [activeListUrls])
 }
 
+export function useEnabledTokens(): string[] | undefined {
+  const enabledTokens = useAppSelector((state) => state.lists.enabledTokens)
+  return enabledTokens
+}
+
 export function useInactiveListUrls(): string[] {
   const lists = useAllLists()
   const allActiveListUrls = useActiveListUrls()

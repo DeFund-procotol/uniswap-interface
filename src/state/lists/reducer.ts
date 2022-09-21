@@ -4,7 +4,15 @@ import { getVersionUpgrade, TokenList, VersionUpgrade } from '@uniswap/token-lis
 import { DEFAULT_ACTIVE_LIST_URLS } from '../../constants/lists'
 import { DEFAULT_LIST_OF_LISTS } from '../../constants/lists'
 import { updateVersion } from '../global/actions'
-import { acceptListUpdate, addList, disableList, enableList, fetchTokenList, removeList } from './actions'
+import {
+  acceptListUpdate,
+  addList,
+  disableList,
+  enableList,
+  fetchTokenList,
+  removeList,
+  updateEnabledTokens,
+} from './actions'
 
 export interface ListsState {
   readonly byUrl: {
@@ -20,6 +28,8 @@ export interface ListsState {
 
   // currently active lists
   readonly activeListUrls: string[] | undefined
+
+  readonly enabledTokens: string[]
 }
 
 type ListState = ListsState['byUrl'][string]
@@ -42,6 +52,7 @@ const initialState: ListsState = {
     }, {}),
   },
   activeListUrls: DEFAULT_ACTIVE_LIST_URLS,
+  enabledTokens: [],
 }
 
 export default createReducer(initialState, (builder) =>
@@ -100,6 +111,9 @@ export default createReducer(initialState, (builder) =>
         loadingRequestId: null,
         error: errorMessage,
       }
+    })
+    .addCase(updateEnabledTokens, (state, { payload: tokens }) => {
+      state.enabledTokens = tokens
     })
     .addCase(addList, (state, { payload: url }) => {
       if (!state.byUrl[url]) {

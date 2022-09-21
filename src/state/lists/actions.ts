@@ -18,5 +18,7 @@ export const removeList = createAction<string>('lists/removeList')
 export const enableList = createAction<string>('lists/enableList')
 export const disableList = createAction<string>('lists/disableList')
 
+export const updateEnabledTokens = createAction<string[]>('lists/updateEnabledToken')
+
 // versioning
 export const acceptListUpdate = createAction<string>('lists/acceptListUpdate')
