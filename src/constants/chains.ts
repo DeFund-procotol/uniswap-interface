@@ -99,10 +99,10 @@ export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
  * The expectation is that all of these networks have immediate transaction confirmation.
  */
 export const L2_CHAIN_IDS = [
-  // SupportedChainId.ARBITRUM_ONE,
-  // SupportedChainId.ARBITRUM_RINKEBY,
-  // SupportedChainId.OPTIMISM,
-  // SupportedChainId.OPTIMISTIC_KOVAN,
+  SupportedChainId.ARBITRUM_ONE,
+  SupportedChainId.ARBITRUM_RINKEBY,
+  SupportedChainId.OPTIMISM,
+  SupportedChainId.OPTIMISTIC_KOVAN,
 ] as const
 
 export type SupportedL2ChainId = typeof L2_CHAIN_IDS[number]
