@@ -50,10 +50,10 @@ export function isSupportedChain(chainId: number | null | undefined): chainId is
 
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   SupportedChainId.MAINNET,
-  SupportedChainId.POLYGON,
-  SupportedChainId.CELO,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.ARBITRUM_ONE,
+  // SupportedChainId.POLYGON,
+  // SupportedChainId.CELO,
+  // SupportedChainId.OPTIMISM,
+  // SupportedChainId.ARBITRUM_ONE,
 ]
 
 /**
@@ -66,13 +66,13 @@ export const UNSUPPORTED_V2POOL_CHAIN_IDS = [
 ]
 
 export const TESTNET_CHAIN_IDS = [
-  SupportedChainId.ROPSTEN,
-  SupportedChainId.RINKEBY,
+  // SupportedChainId.ROPSTEN,
+  // SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
-  SupportedChainId.KOVAN,
-  SupportedChainId.POLYGON_MUMBAI,
-  SupportedChainId.ARBITRUM_RINKEBY,
-  SupportedChainId.OPTIMISTIC_KOVAN,
+  // SupportedChainId.KOVAN,
+  // SupportedChainId.POLYGON_MUMBAI,
+  // SupportedChainId.ARBITRUM_RINKEBY,
+  // SupportedChainId.OPTIMISTIC_KOVAN,
 ] as const
 
 export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
@@ -82,14 +82,14 @@ export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
  */
 export const L1_CHAIN_IDS = [
   SupportedChainId.MAINNET,
-  SupportedChainId.ROPSTEN,
-  SupportedChainId.RINKEBY,
+  // SupportedChainId.ROPSTEN,
+  // SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
-  SupportedChainId.KOVAN,
-  SupportedChainId.POLYGON,
-  SupportedChainId.POLYGON_MUMBAI,
-  SupportedChainId.CELO,
-  SupportedChainId.CELO_ALFAJORES,
+  // SupportedChainId.KOVAN,
+  // SupportedChainId.POLYGON,
+  // SupportedChainId.POLYGON_MUMBAI,
+  // SupportedChainId.CELO,
+  // SupportedChainId.CELO_ALFAJORES,
 ] as const
 
 export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
@@ -99,10 +99,10 @@ export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
  * The expectation is that all of these networks have immediate transaction confirmation.
  */
 export const L2_CHAIN_IDS = [
-  SupportedChainId.ARBITRUM_ONE,
-  SupportedChainId.ARBITRUM_RINKEBY,
-  SupportedChainId.OPTIMISM,
-  SupportedChainId.OPTIMISTIC_KOVAN,
+  // SupportedChainId.ARBITRUM_ONE,
+  // SupportedChainId.ARBITRUM_RINKEBY,
+  // SupportedChainId.OPTIMISM,
+  // SupportedChainId.OPTIMISTIC_KOVAN,
 ] as const
 
 export type SupportedL2ChainId = typeof L2_CHAIN_IDS[number]

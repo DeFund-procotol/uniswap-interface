@@ -11,8 +11,8 @@ export function initializeAnalytics() {
   const API_KEY = isProductionEnv() ? process.env.REACT_APP_AMPLITUDE_KEY : process.env.REACT_APP_AMPLITUDE_TEST_KEY
 
   if (typeof API_KEY === 'undefined') {
-    const keyName = isProductionEnv() ? 'REACT_APP_AMPLITUDE_KEY' : 'REACT_APP_AMPLITUDE_TEST_KEY'
-    console.error(`${keyName} is undefined, Amplitude analytics will not run.`)
+    //const keyName = isProductionEnv() ? 'REACT_APP_AMPLITUDE_KEY' : 'REACT_APP_AMPLITUDE_TEST_KEY'
+    //console.error(`${keyName} is undefined, Amplitude analytics will not run.`)
     return
   }
   init(

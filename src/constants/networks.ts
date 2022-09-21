@@ -18,7 +18,7 @@ if (typeof INFURA_KEY === 'undefined') {
 export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.MAINNET]: [
     // "Safe" URLs
-    'https://api.mycryptoapi.com/eth',
+    // 'https://api.mycryptoapi.com/eth',
     'https://cloudflare-eth.com',
     // "Fallback" URLs
     'https://rpc.ankr.com/eth',
@@ -47,7 +47,7 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.POLYGON]: [
     // "Safe" URLs
     'https://polygon-rpc.com/',
-    'https://rpc-mainnet.matic.network',
+    // 'https://rpc-mainnet.matic.network',
     'https://matic-mainnet.chainstacklabs.com',
     'https://rpc-mainnet.maticvigil.com',
     'https://rpc-mainnet.matic.quiknode.pro',
