@@ -54,7 +54,7 @@ type Value = string | number | boolean | string[] | number[]
  */
 class UserModel {
   private log(method: string, ...parameters: unknown[]) {
-    console.debug(`[amplitude(Identify)]: ${method}(${parameters})`)
+    // console.debug(`[amplitude(Identify)]: ${method}(${parameters})`)
   }
 
   private call(mutate: (event: Identify) => Identify) {

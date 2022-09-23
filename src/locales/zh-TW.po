@@ -1663,6 +1663,10 @@ msgstr "返回"
 msgid "Search name or paste address"
 msgstr "搜索名稱或粘貼地址"
 
+#: src/components/SearchModal/CurrencySearch.tsx
+msgid "Search name"
+msgstr "搜索名稱"
+
 #: src/components/NavBar/SearchBar.tsx
 msgid "Search tokens"
 msgstr "搜索代币"
