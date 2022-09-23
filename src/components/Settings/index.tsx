@@ -203,7 +203,7 @@ export default function SettingsTab({ placeholderSlippage }: { placeholderSlippa
         <MenuFlyout redesignFlag={redesignFlagEnabled}>
           <AutoColumn gap="md" style={{ padding: '1rem' }}>
             <Text fontWeight={600} fontSize={14}>
-              <Trans>{redesignFlagEnabled ? 'Settings' : 'Transaction Settings'}</Trans>
+              {redesignFlagEnabled ? <Trans>Settings</Trans> : <Trans>Transaction Settings</Trans>}
             </Text>
             <TransactionSettings placeholderSlippage={placeholderSlippage} />
             <Text fontWeight={600} fontSize={14}>
