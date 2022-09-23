@@ -148,6 +148,7 @@ export const vars = createGlobalTheme(':root', {
     ...themeVars.colors,
     genieBlue: '#4C82FB',
     fallbackGradient: 'linear-gradient(270deg, #D1D5DB 0%, #F6F6F6 100%)',
+    loadingBackground: '#24272e',
     dropShadow: '0px 4px 16px rgba(70, 115, 250, 0.4)',
     green: '#209853',
     orange: '#FA2C38',
@@ -249,7 +250,7 @@ const flexAlignment = [
 
 const overflow = ['hidden', 'inherit', 'scroll', 'visible', 'auto'] as const
 
-const borderWidth = ['0px', '1px', '1.5px', '2px', '4px']
+const borderWidth = ['0px', '0.5px', '1px', '1.5px', '2px', '4px']
 
 const borderStyle = ['none', 'solid'] as const
 

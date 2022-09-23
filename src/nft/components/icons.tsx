@@ -596,7 +596,7 @@ export const ShoppingCartIcon = (props: SVGProps) => (
     />
   </svg>
 )
-export const RarityVerified = () => (
+export const RarityVerifiedIcon = () => (
   <svg width="17" height="17" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M4.5686 3.53439C4.74662 3.33093 5.0038 3.21423 5.27414 3.21423L10.1451 3.21423C10.4154 3.21423 10.6726 3.33093 10.8506 3.53438L13.0437 6.04077C13.3654 6.40839 13.3509 6.96139 13.0104 7.31163L8.38181 12.0724C8.01367 12.4511 7.40558 12.4511 7.03744 12.0724L2.40887 7.31163C2.06836 6.96139 2.05385 6.40839 2.37552 6.04077L4.5686 3.53439Z"
@@ -960,22 +960,16 @@ export const MagnifyingGlassIcon = (props: SVGProps) => (
   </svg>
 )
 
-export const NavMagnifyingGlassIcon = (props: SVGProps) => (
-  <svg fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+export const NavMagnifyingGlassIcon = () => (
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
-      d="M12.8333 22.1667C17.988 22.1667 22.1667 17.988 22.1667 12.8333C22.1667 7.67868 17.988 3.5 12.8333 3.5C7.67868 3.5 3.5 7.67868 3.5 12.8333C3.5 17.988 7.67868 22.1667 12.8333 22.1667Z"
+      d="M10.5 18C14.6421 18 18 14.6421 18 10.5C18 6.35786 14.6421 3 10.5 3C6.35786 3 3 6.35786 3 10.5C3 14.6421 6.35786 18 10.5 18Z"
       stroke="currentColor"
-      strokeWidth="2.5"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <path
-      d="M24.4969 24.4998L19.4219 19.4248"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    <path d="M21 21L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 )
 
