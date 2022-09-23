@@ -15,7 +15,7 @@ const storedClientId = window.localStorage.getItem(GOOGLE_ANALYTICS_CLIENT_ID_ST
 const googleAnalytics = new GoogleAnalyticsProvider()
 
 export function sendEvent(event: string | UaEventOptions, params?: any) {
-  return googleAnalytics.sendEvent(event, params)
+  // return googleAnalytics.sendEvent(event, params)
 }
 
 export function outboundLink(

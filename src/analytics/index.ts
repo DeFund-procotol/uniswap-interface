@@ -1,4 +1,4 @@
-import { Identify, identify, init, track } from '@amplitude/analytics-browser'
+import { Identify, identify, init } from '@amplitude/analytics-browser'
 import { isProductionEnv } from 'utils/env'
 
 const API_KEY = isProductionEnv() ? process.env.REACT_APP_AMPLITUDE_KEY : process.env.REACT_APP_AMPLITUDE_TEST_KEY
@@ -40,7 +40,7 @@ export function sendAnalyticsEvent(eventName: string, eventProperties?: Record<s
     return
   }
 
-  track(eventName, eventProperties)
+  // track(eventName, eventProperties)
 }
 
 type Value = string | number | boolean | string[] | number[]
