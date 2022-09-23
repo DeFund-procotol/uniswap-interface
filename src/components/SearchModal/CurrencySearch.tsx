@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { Trans } from '@lingui/macro'
+import { t, Trans } from '@lingui/macro'
 import { Currency, Token } from '@uniswap/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { EventName, ModalName } from 'analytics/constants'
@@ -12,37 +12,27 @@ import useToggle from 'hooks/useToggle'
 import useNativeCurrency from 'lib/hooks/useNativeCurrency'
 import { getTokenFilter } from 'lib/hooks/useTokenList/filtering'
 import { tokenComparator, useSortTokensByQuery } from 'lib/hooks/useTokenList/sorting'
-import { ChangeEvent, KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { ChangeEvent, KeyboardEvent, RefObject, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
 import { useAllTokenBalances } from 'state/connection/hooks'
 import styled, { useTheme } from 'styled-components/macro'
 
-import { useAllEnabledTokens, useIsUserAddedToken, useSearchInactiveTokenLists, useToken } from '../../hooks/Tokens'
+import { useAllEnabledTokens, useSearchInactiveTokenLists } from '../../hooks/Tokens'
 import { CloseIcon, ThemedText } from '../../theme'
 import { isAddress } from '../../utils'
 import Column from '../Column'
-import { RowBetween } from '../Row'
+import Row, { RowBetween } from '../Row'
+import CommonBases from './CommonBases'
 import CurrencyList from './CurrencyList'
-import ImportRow from './ImportRow'
-import { PaddedColumn, Separator } from './styleds'
+import { PaddedColumn, SearchInput, Separator } from './styleds'
 
 const ContentWrapper = styled(Column)<{ redesignFlag?: boolean }>`
   background-color: ${({ theme, redesignFlag }) => redesignFlag && theme.backgroundSurface};
   width: 100%;
   flex: 1 1;
   position: relative;
-`
-
-const Footer = styled.div`
-  width: 100%;
-  border-radius: 20px;
-  padding: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  background-color: ${({ theme }) => theme.deprecated_bg1};
-  border-top: 1px solid ${({ theme }) => theme.deprecated_bg2};
 `
 
 interface CurrencySearchProps {
@@ -86,15 +76,10 @@ export function CurrencySearch({
   const [searchQuery, setSearchQuery] = useState<string>('')
   const debouncedQuery = useDebounce(searchQuery, 200)
 
-  // const allTokens = useAllTokens()
   const allTokens = useAllEnabledTokens()
 
   // if they input an address, use it
   const isAddressSearch = isAddress(debouncedQuery)
-
-  const searchToken = useToken(debouncedQuery)
-
-  const searchTokenIsAdded = useIsUserAddedToken(searchToken)
 
   useEffect(() => {
     if (isAddressSearch) {
@@ -203,13 +188,31 @@ export function CurrencySearch({
             </Text>
             <CloseIcon onClick={onDismiss} />
           </RowBetween>
+          <Row>
+            <SearchInput
+              type="text"
+              id="token-search-input"
+              placeholder={t`Search name`}
+              autoComplete="off"
+              redesignFlag={redesignFlagEnabled}
+              value={searchQuery}
+              ref={inputRef as RefObject<HTMLInputElement>}
+              onChange={handleInput}
+              onKeyDown={handleEnter}
+            />
+          </Row>
+          {showCommonBases && (
+            <CommonBases
+              chainId={chainId}
+              onSelect={handleCurrencySelect}
+              selectedCurrency={selectedCurrency}
+              searchQuery={searchQuery}
+              isAddressSearch={isAddressSearch}
+            />
+          )}
         </PaddedColumn>
         <Separator redesignFlag={redesignFlagEnabled} />
-        {searchToken && !searchTokenIsAdded ? (
-          <Column style={{ padding: '20px 0', height: '100%' }}>
-            <ImportRow token={searchToken} showImportView={showImportView} setImportToken={setImportToken} />
-          </Column>
-        ) : filteredSortedTokens?.length > 0 || filteredInactiveTokens?.length > 0 ? (
+        {filteredSortedTokens?.length > 0 || filteredInactiveTokens?.length > 0 ? (
           <div style={{ flex: '1' }}>
             <AutoSizer disableWidth>
               {({ height }) => (

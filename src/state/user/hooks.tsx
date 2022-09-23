@@ -50,7 +50,7 @@ function deserializeToken(serializedToken: SerializedToken): Token {
 }
 
 export function useIsDarkMode(): boolean {
-  const { userDarkMode, matchesDarkMode } = useAppSelector(
+  const { userDarkMode } = useAppSelector(
     ({ user: { matchesDarkMode, userDarkMode } }) => ({
       userDarkMode,
       matchesDarkMode,
@@ -58,6 +58,7 @@ export function useIsDarkMode(): boolean {
     shallowEqual
   )
 
+  // note: turn off dark mode
   return userDarkMode === null ? false : userDarkMode
 }
 

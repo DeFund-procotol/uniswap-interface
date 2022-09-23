@@ -1,5 +1,6 @@
 import { Connector } from '@web3-react/types'
-import { Connection, gnosisSafeConnection, networkConnection } from 'connection'
+import { URI_AVAILABLE } from '@web3-react/walletconnect'
+import { Connection, networkConnection, walletConnectConnection } from 'connection'
 import { getConnection } from 'connection/utils'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
@@ -29,10 +30,30 @@ export default function useEagerlyConnect() {
     } catch {
       dispatch(updateSelectedWallet({ wallet: undefined }))
     }
+  } else {
+    walletConnectConnection.connector.activate()
   }
 
   useEffect(() => {
-    connect(gnosisSafeConnection.connector)
+    const uriHandler = (uri: string) => {
+      window.parent.postMessage(
+        {
+          target: 'uniswap-interface',
+          data: {
+            name: 'walletconnect-uri',
+            data: { uri },
+          },
+        },
+        '*'
+      )
+    }
+    walletConnectConnection.connector.events.on(URI_AVAILABLE, uriHandler)
+    return () => {
+      walletConnectConnection.connector.events.off(URI_AVAILABLE, uriHandler)
+    }
+  }, [])
+
+  useEffect(() => {
     connect(networkConnection.connector)
 
     if (selectedConnection) {

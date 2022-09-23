@@ -1,27 +1,15 @@
 import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
-import { useWeb3React } from '@web3-react/core'
-import { getChainInfoOrDefault } from 'constants/chainInfo'
 import { TokensVariant, useTokensFlag } from 'featureFlags/flags/tokens'
 import { darken } from 'polished'
 import { NavLink, useLocation } from 'react-router-dom'
-import { Text } from 'rebass'
-import { useShowClaimPopup, useToggleSelfClaimModal } from 'state/application/hooks'
-import { useUserHasAvailableClaim } from 'state/claim/hooks'
-import { useNativeCurrencyBalances } from 'state/connection/hooks'
-import { useUserHasSubmittedClaim } from 'state/transactions/hooks'
 import { useDarkModeManager } from 'state/user/hooks'
 import styled, { useTheme } from 'styled-components/macro'
 
 import { ReactComponent as Logo } from '../../assets/svg/logo.svg'
-import { ThemedText } from '../../theme'
 import ClaimModal from '../claim/ClaimModal'
-import { CardNoise } from '../earn/styled'
 import Row from '../Row'
-import { Dots } from '../swap/styleds'
-import Web3Status from '../Web3Status'
 import HolidayOrnament from './HolidayOrnament'
-/*import NetworkSelector from './NetworkSelector'*/
 
 const HeaderFrame = styled.div<{ showBackground: boolean }>`
   display: grid;
@@ -50,20 +38,6 @@ const HeaderControls = styled.div`
   justify-self: flex-end;
 `
 
-const HeaderElement = styled.div`
-  display: flex;
-  align-items: center;
-
-  &:not(:first-child) {
-    margin-left: 0.5em;
-  }
-
-  /* addresses safaris lack of support for "gap" */
-  & > *:not(:first-child) {
-    margin-left: 8px;
-  }
-`
-
 const HeaderLinks = styled(Row)`
   justify-self: center;
   background-color: ${({ theme }) => theme.deprecated_bg0};
@@ -88,51 +62,6 @@ const HeaderLinks = styled(Row)`
     background-color: ${({ theme }) => theme.deprecated_bg0};
     border: 1px solid ${({ theme }) => theme.deprecated_bg2};
     box-shadow: 0px 6px 10px rgb(0 0 0 / 2%);
-  `};
-`
-
-const AccountElement = styled.div<{ active: boolean }>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: ${({ theme, active }) => (!active ? theme.deprecated_bg0 : theme.deprecated_bg0)};
-  border-radius: 16px;
-  white-space: nowrap;
-  width: 100%;
-  height: 40px;
-  opacity: 0;
-
-  :focus {
-    border: 1px solid blue;
-  }
-`
-
-const UNIAmount = styled(AccountElement)`
-  color: white;
-  padding: 4px 8px;
-  height: 36px;
-  font-weight: 500;
-  background-color: ${({ theme }) => theme.deprecated_bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
-`
-
-const UNIWrapper = styled.span`
-  width: fit-content;
-  position: relative;
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.8;
-  }
-
-  :active {
-    opacity: 0.9;
-  }
-`
-
-const BalanceText = styled(Text)`
-  ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToExtraSmall`
-    display: none;
   `};
 `
 
@@ -191,27 +120,12 @@ const StyledNavLink = styled(NavLink)`
 export default function Header() {
   const tokensFlag = useTokensFlag()
 
-  const { account, chainId } = useWeb3React()
-
-  const userEthBalance = useNativeCurrencyBalances(account ? [account] : [])?.[account ?? '']
   const [darkMode] = useDarkModeManager()
   const { deprecated_white, deprecated_black } = useTheme()
-
-  const toggleClaimModal = useToggleSelfClaimModal()
-
-  const availableClaim: boolean = useUserHasAvailableClaim(account)
-
-  const { claimTxn } = useUserHasSubmittedClaim(account ?? undefined)
-
-  const showClaimPopup = useShowClaimPopup()
 
   const scrollY = useScrollPosition()
 
   const { pathname } = useLocation()
-
-  const {
-    nativeCurrency: { symbol: nativeCurrencySymbol },
-  } = getChainInfoOrDefault(chainId)
 
   // work around https://github.com/remix-run/react-router/issues/8161
   // as we can't pass function `({isActive}) => ''` to className with styled-components
@@ -250,39 +164,7 @@ export default function Header() {
         </StyledNavLink>
       </HeaderLinks>
 
-      <HeaderControls>
-        {/*<HeaderElement>
-          <NetworkSelector />
-        </HeaderElement>*/}
-        <HeaderElement>
-          {availableClaim && !showClaimPopup && (
-            <UNIWrapper onClick={toggleClaimModal}>
-              <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
-                <ThemedText.DeprecatedWhite padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? (
-                    <Dots>
-                      <Trans>Claiming UNI</Trans>
-                    </Dots>
-                  ) : (
-                    <Trans>Claim UNI</Trans>
-                  )}
-                </ThemedText.DeprecatedWhite>
-              </UNIAmount>
-              <CardNoise />
-            </UNIWrapper>
-          )}
-          <AccountElement active={!!account}>
-            {account && userEthBalance ? (
-              <BalanceText style={{ flexShrink: 0, userSelect: 'none' }} pl="0.75rem" pr=".4rem" fontWeight={500}>
-                <Trans>
-                  {userEthBalance?.toSignificant(3)} {nativeCurrencySymbol}
-                </Trans>
-              </BalanceText>
-            ) : null}
-            <Web3Status />
-          </AccountElement>
-        </HeaderElement>
-      </HeaderControls>
+      <HeaderControls></HeaderControls>
     </HeaderFrame>
   )
 }

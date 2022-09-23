@@ -15,7 +15,6 @@ import { useAppSelector } from 'state/hooks'
 import { useDerivedSwapInfo } from 'state/swap/hooks'
 import styled, { css, useTheme } from 'styled-components/macro'
 
-import { walletConnectConnection } from '../../connection'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { useHasSocks } from '../../hooks/useSocksBalance'
 import {
@@ -177,9 +176,6 @@ const StyledConnect = styled.div`
     }) => `${duration.fast} color ${timing.in}`};
   }
 `
-async function linkDecontract() {
-  await walletConnectConnection.connector.activate()
-}
 
 const CHEVRON_PROPS = {
   height: 20,
@@ -316,23 +312,6 @@ export default function Web3Status() {
 
   const pending = sortedRecentTransactions.filter((tx) => !tx.receipt).map((tx) => tx.hash)
   const confirmed = sortedRecentTransactions.filter((tx) => tx.receipt).map((tx) => tx.hash)
-
-  useEffect(() => {
-    linkDecontract()
-  }, [])
-
-  useEffect(() => {
-    walletConnectConnection.connector.events.on(URI_AVAILABLE, (uri: string) => {
-      const params = {
-        target: 'uniswap-interface',
-        data: {
-          name: 'walletconnect-uri',
-          data: { uri },
-        },
-      }
-      window.parent.postMessage(params, '*')
-    })
-  }, [])
 
   return (
     <span ref={ref}>
