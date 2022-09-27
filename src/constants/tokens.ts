@@ -27,11 +27,27 @@ export const USDC_RINKEBY = new Token(
 )
 export const USDC_GOERLI = new Token(
   SupportedChainId.GOERLI,
-  '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
+  // '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
+  '0x04A95464923f9d9aBF40eD75FF0401C04d79beC0',
   6,
   'USDC',
   'USD//C'
 )
+export const USDT_GOERLI = new Token(
+  SupportedChainId.GOERLI,
+  '0xbEAF6Ce8Bc638098612786204C0B5fC8356F8d20',
+  6,
+  'USDT',
+  'Tether USD'
+)
+export const DAI_GOERLI = new Token(
+  SupportedChainId.GOERLI,
+  '0xC48C1f5Bcf51872589e8c25F0DC5F80a86112d6b',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+)
+
 export const USDC_KOVAN = new Token(
   SupportedChainId.KOVAN,
   '0x31eeb2d0f9b6fd8642914ab10f4dd473677d80df',

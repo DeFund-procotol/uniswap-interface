@@ -11,6 +11,7 @@ import {
   CUSD_CELO_ALFAJORES,
   DAI,
   DAI_ARBITRUM_ONE,
+  DAI_GOERLI,
   DAI_OPTIMISM,
   DAI_POLYGON,
   ETH2X_FLI,
@@ -26,11 +27,13 @@ import {
   SWISE,
   TRIBE,
   USDC_ARBITRUM,
+  USDC_GOERLI,
   USDC_MAINNET,
   USDC_OPTIMISM,
   USDC_POLYGON,
   USDT,
   USDT_ARBITRUM_ONE,
+  USDT_GOERLI,
   USDT_OPTIMISM,
   USDT_POLYGON,
   WBTC,
@@ -86,6 +89,12 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     WETH_POLYGON,
   ],
   [SupportedChainId.CELO]: [CUSD_CELO, CEUR_CELO, CMC02_CELO, PORTAL_USDC_CELO, PORTAL_ETH_CELO],
+  [SupportedChainId.GOERLI]: [
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.GOERLI],
+    DAI_GOERLI,
+    USDC_GOERLI,
+    USDT_GOERLI,
+  ],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [SupportedChainId.MAINNET]: {
@@ -137,6 +146,9 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.KOVAN]: [
     nativeOnChain(SupportedChainId.KOVAN),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.KOVAN] as Token,
+    DAI_GOERLI,
+    USDC_GOERLI,
+    USDT_GOERLI,
   ],
   [SupportedChainId.ARBITRUM_ONE]: [
     nativeOnChain(SupportedChainId.ARBITRUM_ONE),

@@ -1,15 +1,17 @@
 import { Interface } from '@ethersproject/abi'
+import { AddressZero } from '@ethersproject/constants'
 import { BigintIsh, Currency, Token } from '@uniswap/sdk-core'
 import { abi as IUniswapV3PoolStateABI } from '@uniswap/v3-core/artifacts/contracts/interfaces/pool/IUniswapV3PoolState.sol/IUniswapV3PoolState.json'
 import { computePoolAddress } from '@uniswap/v3-sdk'
 import { FeeAmount, Pool } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'
 import JSBI from 'jsbi'
-import { useMultipleContractSingleData } from 'lib/hooks/multicall'
+import { useMultipleContractSingleData, useSingleContractWithCallData } from 'lib/hooks/multicall'
 import { useMemo } from 'react'
 
 import { V3_CORE_FACTORY_ADDRESSES } from '../constants/addresses'
 import { IUniswapV3PoolStateInterface } from '../types/v3/IUniswapV3PoolState'
+import { useFundFilterContract } from './useContract'
 
 const POOL_STATE_INTERFACE = new Interface(IUniswapV3PoolStateABI) as IUniswapV3PoolStateInterface
 
@@ -81,6 +83,7 @@ export enum PoolState {
   NOT_EXISTS,
   EXISTS,
   INVALID,
+  NOT_ALLOWED,
 }
 
 export function usePools(
@@ -113,6 +116,16 @@ export function usePools(
   const slot0s = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'slot0')
   const liquidities = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'liquidity')
 
+  const fundFilter = useFundFilterContract()
+  const calldata = useMemo(
+    () =>
+      poolAddresses.map((pool) =>
+        fundFilter ? fundFilter.interface.encodeFunctionData('isPoolAllowed', [pool || AddressZero]) : ''
+      ),
+    [fundFilter, poolAddresses]
+  )
+  const alloweds = useSingleContractWithCallData(fundFilter, calldata)
+
   return useMemo(() => {
     return poolKeys.map((_key, index) => {
       const tokens = poolTokens[index]
@@ -125,10 +138,14 @@ export function usePools(
       if (!liquidities[index]) return [PoolState.INVALID, null]
       const { result: liquidity, loading: liquidityLoading, valid: liquidityValid } = liquidities[index]
 
-      if (!tokens || !slot0Valid || !liquidityValid) return [PoolState.INVALID, null]
-      if (slot0Loading || liquidityLoading) return [PoolState.LOADING, null]
+      if (!alloweds[index]) return [PoolState.INVALID, null]
+      const { result: allowed, loading: allowedLoading, valid: allowedValid } = alloweds[index]
+
+      if (!tokens || !slot0Valid || !liquidityValid || !allowedValid) return [PoolState.INVALID, null]
+      if (slot0Loading || liquidityLoading || allowedLoading) return [PoolState.LOADING, null]
       if (!slot0 || !liquidity) return [PoolState.NOT_EXISTS, null]
       if (!slot0.sqrtPriceX96 || slot0.sqrtPriceX96.eq(0)) return [PoolState.NOT_EXISTS, null]
+      if (allowed && !allowed[0]) return [PoolState.NOT_ALLOWED, null]
 
       try {
         const pool = PoolCache.getPool(token0, token1, fee, slot0.sqrtPriceX96, liquidity[0], slot0.tick)
@@ -138,7 +155,7 @@ export function usePools(
         return [PoolState.NOT_EXISTS, null]
       }
     })
-  }, [liquidities, poolKeys, slot0s, poolTokens])
+  }, [liquidities, poolKeys, slot0s, alloweds, poolTokens])
 }
 
 export function usePool(

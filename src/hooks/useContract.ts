@@ -9,6 +9,7 @@ import NonfungiblePositionManagerJson from '@uniswap/v3-periphery/artifacts/cont
 import V3MigratorJson from '@uniswap/v3-periphery/artifacts/contracts/V3Migrator.sol/V3Migrator.json'
 import { useWeb3React } from '@web3-react/core'
 import ARGENT_WALLET_DETECTOR_ABI from 'abis/argent-wallet-detector.json'
+import Fund_Filter_ABI from 'abis/decontracts-fund-filter.json'
 import EIP_2612 from 'abis/eip_2612.json'
 import ENS_PUBLIC_RESOLVER_ABI from 'abis/ens-public-resolver.json'
 import ENS_ABI from 'abis/ens-registrar.json'
@@ -20,6 +21,7 @@ import { ArgentWalletDetector, EnsPublicResolver, EnsRegistrar, Erc20, Erc721, E
 import WETH_ABI from 'abis/weth.json'
 import {
   ARGENT_WALLET_DETECTOR_ADDRESS,
+  DECONTRACTS_FUND_FILTER_ADDRESS,
   ENS_REGISTRAR_ADDRESSES,
   MULTICALL_ADDRESS,
   NONFUNGIBLE_POSITION_MANAGER_ADDRESSES,
@@ -118,6 +120,10 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 
 export function useV2RouterContract(): Contract | null {
   return useContract(V2_ROUTER_ADDRESS, IUniswapV2Router02ABI, true)
+}
+
+export function useFundFilterContract(): Contract | null {
+  return useContract(DECONTRACTS_FUND_FILTER_ADDRESS, Fund_Filter_ABI, false)
 }
 
 export function useInterfaceMulticall() {
