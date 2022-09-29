@@ -13,7 +13,7 @@ export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x7a250d56
 
 export const DECONTRACTS_FUND_FILTER_ADDRESS: AddressMap = {
   [SupportedChainId.MAINNET]: '0x0000000000000000000000000000000000000000',
-  [SupportedChainId.GOERLI]: '0x8525B103D9d71170A0c61FBe03A8e1B183920092',
+  [SupportedChainId.GOERLI]: '0xd6461f2ea27a4C15d6c198B5Dd06871C9b33d546',
 }
 
 // celo v3 addresses
