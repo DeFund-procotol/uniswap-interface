@@ -1,4 +1,4 @@
-import { initializeAnalytics, sendAnalyticsEvent, user } from 'analytics'
+import { sendAnalyticsEvent, user } from 'analytics'
 import { CUSTOM_USER_PROPERTIES, EventName, PageName } from 'analytics/constants'
 import { Trace } from 'analytics/Trace'
 import Loader from 'components/Loader'
@@ -17,7 +17,6 @@ import { Z_INDEX } from 'theme/zIndex'
 import { getBrowser } from 'utils/browser'
 import { getCLS, getFCP, getFID, getLCP, Metric } from 'web-vitals'
 
-import { useAnalyticsReporter } from '../components/analytics'
 import ErrorBoundary from '../components/ErrorBoundary'
 import Header from '../components/Header'
 import Polling from '../components/Header/Polling'
@@ -121,8 +120,8 @@ export default function App() {
   const isDarkMode = useIsDarkMode()
   const isExpertMode = useIsExpertMode()
 
-  useAnalyticsReporter()
-  initializeAnalytics()
+  // useAnalyticsReporter()
+  // initializeAnalytics()
 
   useEffect(() => {
     window.scrollTo(0, 0)

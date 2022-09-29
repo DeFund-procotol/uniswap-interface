@@ -78,9 +78,9 @@ export function useAnalyticsReporter() {
     googleAnalytics.set({ cd1: chainId ?? 0 })
   }, [chainId])
 
-  useEffect(() => {
-    googleAnalytics.pageview(`${pathname}${search}`)
-  }, [pathname, search])
+  // useEffect(() => {
+  //   googleAnalytics.pageview(`${pathname}${search}`)
+  // }, [pathname, search])
 
   useEffect(() => {
     // typed as 'any' in react-ga4 -.-
