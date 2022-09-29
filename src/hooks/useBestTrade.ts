@@ -23,13 +23,9 @@ export function useBestTrade(
     useMemo(() => [amountSpecified, otherCurrency], [amountSpecified, otherCurrency]),
     200
   )
-  const useFallback = true
+
   // only use client side router if routing api trade failed or is not supported
-  const bestV3Trade = useClientSideV3Trade(
-    tradeType,
-    useFallback ? debouncedAmount : undefined,
-    useFallback ? debouncedOtherCurrency : undefined
-  )
+  const bestV3Trade = useClientSideV3Trade(tradeType, debouncedAmount, debouncedOtherCurrency)
 
   // only return gas estimate from api if routing api trade is used
   return useMemo(

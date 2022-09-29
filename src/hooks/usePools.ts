@@ -125,6 +125,7 @@ export function usePools(
     [fundFilter, poolAddresses]
   )
   const alloweds = useSingleContractWithCallData(fundFilter, calldata)
+  console.debug(fundFilter?.address, alloweds)
 
   return useMemo(() => {
     return poolKeys.map((_key, index) => {
