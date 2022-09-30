@@ -141,7 +141,9 @@ Please file a bug detailing how this happened - https://github.com/Uniswap/inter
           sufficientBalance && inputAmount
             ? async () => {
                 try {
-                  const txReceipt = await wethContract.withdraw(`0x${inputAmount.quotient.toString(16)}`)
+                  const txReceipt = await wethContract.withdraw(`0x${inputAmount.quotient.toString(16)}`, {
+                    gasLimit: 50000,
+                  })
                   addTransaction(txReceipt, {
                     type: TransactionType.WRAP,
                     unwrapped: true,
