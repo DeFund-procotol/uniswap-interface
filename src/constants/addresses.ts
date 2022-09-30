@@ -12,7 +12,7 @@ export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTO
 export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
 
 export const DECONTRACTS_FUND_FILTER_ADDRESS: AddressMap = {
-  [SupportedChainId.MAINNET]: '0x0000000000000000000000000000000000000000',
+  [SupportedChainId.MAINNET]: '0xa966eb24cf9fc47d792E0BB1d0705a448BE6dbf7',
   [SupportedChainId.GOERLI]: '0xd6461f2ea27a4C15d6c198B5Dd06871C9b33d546',
 }
 
