@@ -2,9 +2,11 @@ import { Currency, Token } from '@uniswap/sdk-core'
 import { FeeAmount, Pool } from '@uniswap/v3-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { SupportedChainId } from 'constants/chains'
+import { useSingleContractMultipleData } from 'lib/hooks/multicall'
 import { useMemo } from 'react'
 
 import { useAllCurrencyCombinations } from './useAllCurrencyCombinations'
+import { useFundFilterContract } from './useContract'
 import { PoolState, usePools } from './usePools'
 
 /**
@@ -42,7 +44,25 @@ export function useV3SwapPools(
     [allCurrencyCombinations, chainId]
   )
 
-  const pools = usePools(allCurrencyCombinationsWithAllFees)
+  // Filter allowed pools
+  const poolParams: [string, string, FeeAmount][] = useMemo(
+    () => allCurrencyCombinationsWithAllFees.map((item) => [item[0].address, item[1].address, item[2]]),
+    [allCurrencyCombinationsWithAllFees]
+  )
+  const filter = useFundFilterContract()
+  const allAllowed = useSingleContractMultipleData(filter, 'isPoolParamsAllowed', poolParams)
+
+  const allowedCurrencyCombinationsWithAllFees = useMemo(
+    () =>
+      allCurrencyCombinationsWithAllFees.filter((_, index) => {
+        if (!allAllowed[index]) return false
+        const { result: allowed, loading: allowedLoading, valid: allowedValid } = allAllowed[index]
+        if (!allowedValid || allowedLoading) return false
+        return allowed && allowed[0]
+      }),
+    [allCurrencyCombinationsWithAllFees, allAllowed]
+  )
+  const pools = usePools(allowedCurrencyCombinationsWithAllFees)
 
   return useMemo(() => {
     return {

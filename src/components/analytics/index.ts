@@ -1,7 +1,6 @@
 import { useWeb3React } from '@web3-react/core'
 import { useEffect } from 'react'
 import { UaEventOptions } from 'react-ga4/types/ga4'
-import { useLocation } from 'react-router-dom'
 import { isMobile } from 'utils/userAgent'
 import { getCLS, getFCP, getFID, getLCP, Metric } from 'web-vitals'
 
@@ -64,7 +63,6 @@ function reportWebVitals({ name, delta, id }: Metric) {
 
 // tracks web vitals and pageviews
 export function useAnalyticsReporter() {
-  const { pathname, search } = useLocation()
   useEffect(() => {
     getFCP(reportWebVitals)
     getFID(reportWebVitals)
@@ -77,10 +75,6 @@ export function useAnalyticsReporter() {
     // cd1 - custom dimension 1 - chainId
     googleAnalytics.set({ cd1: chainId ?? 0 })
   }, [chainId])
-
-  // useEffect(() => {
-  //   googleAnalytics.pageview(`${pathname}${search}`)
-  // }, [pathname, search])
 
   useEffect(() => {
     // typed as 'any' in react-ga4 -.-
