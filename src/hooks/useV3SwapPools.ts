@@ -63,6 +63,12 @@ export function useV3SwapPools(
     [allCurrencyCombinationsWithAllFees, allAllowed]
   )
   const pools = usePools(allowedCurrencyCombinationsWithAllFees)
+  console.debug(
+    'filter',
+    allCurrencyCombinationsWithAllFees.length,
+    '->',
+    allowedCurrencyCombinationsWithAllFees.length
+  )
 
   return useMemo(() => {
     return {
