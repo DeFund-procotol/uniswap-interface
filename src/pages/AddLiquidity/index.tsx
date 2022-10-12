@@ -59,7 +59,6 @@ import { ExternalLink, ThemedText } from '../../theme'
 import approveAmountCalldata from '../../utils/approveAmountCalldata'
 import { calculateGasMargin } from '../../utils/calculateGasMargin'
 import { currencyId } from '../../utils/currencyId'
-import { maxAmountSpend } from '../../utils/maxAmountSpend'
 import { Dots } from '../Pool/styleds'
 import { Review } from './Review'
 import {
@@ -205,7 +204,8 @@ export default function AddLiquidity() {
     (accumulator, field) => {
       return {
         ...accumulator,
-        [field]: maxAmountSpend(currencyBalances[field]),
+        // [field]: maxAmountSpend(currencyBalances[field]),
+        [field]: currencyBalances[field],
       }
     },
     {}
