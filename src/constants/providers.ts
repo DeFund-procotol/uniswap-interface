@@ -49,7 +49,7 @@ class AppJsonRpcProvider extends StaticJsonRpcProvider {
 /**
  * These are the only JsonRpcProviders used directly by the interface.
  */
-export const RPC_PROVIDERS: { [key in SupportedChainId]: StaticJsonRpcProvider } = {
+export const RPC_PROVIDERS: { [chainId: number]: StaticJsonRpcProvider } = {
   [SupportedChainId.MAINNET]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.MAINNET]),
   [SupportedChainId.GOERLI]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.GOERLI]),
   [SupportedChainId.OPTIMISM]: new AppJsonRpcProvider(RPC_URLS[SupportedChainId.OPTIMISM]),
