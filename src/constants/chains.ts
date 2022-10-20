@@ -3,10 +3,7 @@
  */
 export enum SupportedChainId {
   MAINNET = 1,
-  ROPSTEN = 3,
-  RINKEBY = 4,
   GOERLI = 5,
-  KOVAN = 42,
 
   ARBITRUM_ONE = 42161,
   ARBITRUM_RINKEBY = 421611,
@@ -23,10 +20,7 @@ export enum SupportedChainId {
 
 export const CHAIN_IDS_TO_NAMES = {
   [SupportedChainId.MAINNET]: 'mainnet',
-  [SupportedChainId.ROPSTEN]: 'ropsten',
-  [SupportedChainId.RINKEBY]: 'rinkeby',
   [SupportedChainId.GOERLI]: 'goerli',
-  [SupportedChainId.KOVAN]: 'kovan',
   [SupportedChainId.POLYGON]: 'polygon',
   [SupportedChainId.POLYGON_MUMBAI]: 'polygon_mumbai',
   [SupportedChainId.CELO]: 'celo',
@@ -66,10 +60,7 @@ export const UNSUPPORTED_V2POOL_CHAIN_IDS = [
 ]
 
 export const TESTNET_CHAIN_IDS = [
-  // SupportedChainId.ROPSTEN,
-  // SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
-  // SupportedChainId.KOVAN,
   // SupportedChainId.POLYGON_MUMBAI,
   // SupportedChainId.ARBITRUM_RINKEBY,
   // SupportedChainId.OPTIMISTIC_KOVAN,
@@ -82,10 +73,7 @@ export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
  */
 export const L1_CHAIN_IDS = [
   SupportedChainId.MAINNET,
-  // SupportedChainId.ROPSTEN,
-  // SupportedChainId.RINKEBY,
   SupportedChainId.GOERLI,
-  // SupportedChainId.KOVAN,
   // SupportedChainId.POLYGON,
   // SupportedChainId.POLYGON_MUMBAI,
   // SupportedChainId.CELO,

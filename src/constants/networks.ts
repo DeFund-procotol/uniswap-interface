@@ -24,25 +24,11 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     'https://rpc.ankr.com/eth',
     'https://eth-mainnet.public.blastapi.io',
   ],
-  [SupportedChainId.ROPSTEN]: [
-    // "Fallback" URLs
-    'https://rpc.ankr.com/eth_ropsten',
-  ],
-  [SupportedChainId.RINKEBY]: [
-    // "Fallback" URLs
-    'https://rinkeby-light.eth.linkpool.io/',
-  ],
   [SupportedChainId.GOERLI]: [
     // "Safe" URLs
     'https://rpc.goerli.mudit.blog/',
     // "Fallback" URLs
     'https://rpc.ankr.com/eth_goerli',
-  ],
-  [SupportedChainId.KOVAN]: [
-    // "Safe" URLs
-    'https://kovan.poa.network',
-    // "Fallback" URLs
-    'https://eth-kovan.public.blastapi.io',
   ],
   [SupportedChainId.POLYGON]: [
     // "Safe" URLs
@@ -98,16 +84,7 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
     `https://mainnet.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.MAINNET],
   ],
-  [SupportedChainId.RINKEBY]: [
-    `https://rinkeby.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.RINKEBY],
-  ],
-  [SupportedChainId.ROPSTEN]: [
-    `https://ropsten.infura.io/v3/${INFURA_KEY}`,
-    ...FALLBACK_URLS[SupportedChainId.ROPSTEN],
-  ],
   [SupportedChainId.GOERLI]: [`https://goerli.infura.io/v3/${INFURA_KEY}`, ...FALLBACK_URLS[SupportedChainId.GOERLI]],
-  [SupportedChainId.KOVAN]: [`https://kovan.infura.io/v3/${INFURA_KEY}`, ...FALLBACK_URLS[SupportedChainId.KOVAN]],
   [SupportedChainId.OPTIMISM]: [
     `https://optimism-mainnet.infura.io/v3/${INFURA_KEY}`,
     ...FALLBACK_URLS[SupportedChainId.OPTIMISM],

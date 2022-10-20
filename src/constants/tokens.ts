@@ -11,20 +11,6 @@ export const USDC_MAINNET = new Token(
   'USDC',
   'USD//C'
 )
-export const USDC_ROPSTEN = new Token(
-  SupportedChainId.ROPSTEN,
-  '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
-  6,
-  'USDC',
-  'USD//C'
-)
-export const USDC_RINKEBY = new Token(
-  SupportedChainId.RINKEBY,
-  '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b',
-  6,
-  'tUSDC',
-  'test USD//C'
-)
 export const USDC_GOERLI = new Token(
   SupportedChainId.GOERLI,
   // '0x07865c6e87b9f70255377e024ace6630c1eaa37f',
@@ -48,13 +34,6 @@ export const DAI_GOERLI = new Token(
   'Dai Stablecoin'
 )
 
-export const USDC_KOVAN = new Token(
-  SupportedChainId.KOVAN,
-  '0x31eeb2d0f9b6fd8642914ab10f4dd473677d80df',
-  6,
-  'USDC',
-  'USD//C'
-)
 export const USDC_OPTIMISM = new Token(
   SupportedChainId.OPTIMISM,
   '0x7F5c764cBc14f9669B88837ca1490cCa17c31607',
@@ -150,9 +129,6 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.CELO]: PORTAL_USDC_CELO,
   [SupportedChainId.CELO_ALFAJORES]: USDC_CELO_ALFAJORES,
   [SupportedChainId.GOERLI]: USDC_GOERLI,
-  [SupportedChainId.RINKEBY]: USDC_RINKEBY,
-  [SupportedChainId.KOVAN]: USDC_KOVAN,
-  [SupportedChainId.ROPSTEN]: USDC_ROPSTEN,
 }
 export const DAI_POLYGON = new Token(
   SupportedChainId.POLYGON,
@@ -354,10 +330,7 @@ export const CEUR_CELO_ALFAJORES = new Token(
 
 export const UNI: { [chainId: number]: Token } = {
   [SupportedChainId.MAINNET]: new Token(SupportedChainId.MAINNET, UNI_ADDRESS[1], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.RINKEBY]: new Token(SupportedChainId.RINKEBY, UNI_ADDRESS[4], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.ROPSTEN]: new Token(SupportedChainId.ROPSTEN, UNI_ADDRESS[3], 18, 'UNI', 'Uniswap'),
   [SupportedChainId.GOERLI]: new Token(SupportedChainId.GOERLI, UNI_ADDRESS[5], 18, 'UNI', 'Uniswap'),
-  [SupportedChainId.KOVAN]: new Token(SupportedChainId.KOVAN, UNI_ADDRESS[42], 18, 'UNI', 'Uniswap'),
 }
 
 export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } = {
@@ -483,8 +456,5 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.CELO]: PORTAL_USDC_CELO.address,
     [SupportedChainId.CELO_ALFAJORES]: PORTAL_USDC_CELO.address,
     [SupportedChainId.GOERLI]: USDC_GOERLI.address,
-    [SupportedChainId.RINKEBY]: USDC_RINKEBY.address,
-    [SupportedChainId.KOVAN]: USDC_KOVAN.address,
-    [SupportedChainId.ROPSTEN]: USDC_ROPSTEN.address,
   },
 }

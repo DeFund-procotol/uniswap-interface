@@ -131,24 +131,9 @@ export const COMMON_BASES: ChainCurrencyList = {
     WBTC,
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET] as Token,
   ],
-  [SupportedChainId.ROPSTEN]: [
-    nativeOnChain(SupportedChainId.ROPSTEN),
-    WRAPPED_NATIVE_CURRENCY[SupportedChainId.ROPSTEN] as Token,
-  ],
-  [SupportedChainId.RINKEBY]: [
-    nativeOnChain(SupportedChainId.RINKEBY),
-    WRAPPED_NATIVE_CURRENCY[SupportedChainId.RINKEBY] as Token,
-  ],
   [SupportedChainId.GOERLI]: [
     nativeOnChain(SupportedChainId.GOERLI),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.GOERLI] as Token,
-  ],
-  [SupportedChainId.KOVAN]: [
-    nativeOnChain(SupportedChainId.KOVAN),
-    WRAPPED_NATIVE_CURRENCY[SupportedChainId.KOVAN] as Token,
-    DAI_GOERLI,
-    USDC_GOERLI,
-    USDT_GOERLI,
   ],
   [SupportedChainId.ARBITRUM_ONE]: [
     nativeOnChain(SupportedChainId.ARBITRUM_ONE),

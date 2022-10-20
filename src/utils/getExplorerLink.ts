@@ -2,10 +2,7 @@ import { SupportedChainId } from '../constants/chains'
 
 const BLOCK_EXPLORER_PREFIXES: { [chainId: number]: string } = {
   [SupportedChainId.MAINNET]: 'https://etherscan.io',
-  [SupportedChainId.ROPSTEN]: 'https://ropsten.etherscan.io',
-  [SupportedChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [SupportedChainId.GOERLI]: 'https://goerli.etherscan.io',
-  [SupportedChainId.KOVAN]: 'https://kovan.etherscan.io',
   [SupportedChainId.OPTIMISM]: 'https://optimistic.etherscan.io',
   [SupportedChainId.OPTIMISTIC_KOVAN]: 'https://kovan-optimistic.etherscan.io',
   [SupportedChainId.POLYGON]: 'https://polygonscan.com',
