@@ -12,8 +12,8 @@ export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTO
 export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
 
 export const DECONTRACTS_FUND_FILTER_ADDRESS: AddressMap = {
-  [SupportedChainId.MAINNET]: '0xa966eb24cf9fc47d792E0BB1d0705a448BE6dbf7',
-  [SupportedChainId.GOERLI]: '0x6a3B3C2F53a55CfC2f6f31fC5Df045cfF278a8f4',
+  [SupportedChainId.MAINNET]: '0xFcfD9404126915FeAFD8D7A9381f88c8f114Bd38',
+  [SupportedChainId.GOERLI]: '0x0Db0c37dF24E02B2D22bdC8c728Db5f1765f6b9E',
 }
 
 // celo v3 addresses
