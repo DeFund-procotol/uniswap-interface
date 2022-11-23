@@ -74,7 +74,7 @@ export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
 export const L1_CHAIN_IDS = [
   SupportedChainId.MAINNET,
   SupportedChainId.GOERLI,
-  SupportedChainId.POLYGON,
+  // SupportedChainId.POLYGON,
   SupportedChainId.POLYGON_MUMBAI,
   // SupportedChainId.CELO,
   // SupportedChainId.CELO_ALFAJORES,

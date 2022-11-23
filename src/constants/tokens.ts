@@ -76,6 +76,27 @@ export const USDC_POLYGON_MUMBAI = new Token(
   'USDC',
   'USD//C'
 )
+export const USDC_MUMBAI = new Token(
+  SupportedChainId.POLYGON_MUMBAI,
+  '0xf670522288726AeD164a3322b49262Ddf6240ecA',
+  6,
+  'USDC',
+  'USD//C'
+)
+export const USDT_MUMAI = new Token(
+  SupportedChainId.POLYGON_MUMBAI,
+  '0x8478643D27DbE81d199f74f654E4b0e41d867de3',
+  6,
+  'USDT',
+  'Tether USD'
+)
+export const DAI_MUMBAI = new Token(
+  SupportedChainId.POLYGON_MUMBAI,
+  '0xEBde1Ed73cDe47170d1e280dc0d52Ef2B6fF4Ad7',
+  18,
+  'DAI',
+  'Dai Stablecoin'
+)
 export const PORTAL_USDC_CELO = new Token(
   SupportedChainId.CELO,
   '0x37f750B7cC259A2f741AF45294f6a16572CF5cAd',
@@ -125,7 +146,7 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.ARBITRUM_RINKEBY]: USDC_ARBITRUM_RINKEBY,
   [SupportedChainId.OPTIMISTIC_KOVAN]: USDC_OPTIMISTIC_KOVAN,
   [SupportedChainId.POLYGON]: USDC_POLYGON,
-  [SupportedChainId.POLYGON_MUMBAI]: USDC_POLYGON_MUMBAI,
+  [SupportedChainId.POLYGON_MUMBAI]: USDC_MUMBAI,
   [SupportedChainId.CELO]: PORTAL_USDC_CELO,
   [SupportedChainId.CELO_ALFAJORES]: USDC_CELO_ALFAJORES,
   [SupportedChainId.GOERLI]: USDC_GOERLI,
@@ -452,7 +473,7 @@ export const TOKEN_SHORTHANDS: { [shorthand: string]: { [chainId in SupportedCha
     [SupportedChainId.ARBITRUM_RINKEBY]: USDC_ARBITRUM_RINKEBY.address,
     [SupportedChainId.OPTIMISTIC_KOVAN]: USDC_OPTIMISTIC_KOVAN.address,
     [SupportedChainId.POLYGON]: USDC_POLYGON.address,
-    [SupportedChainId.POLYGON_MUMBAI]: USDC_POLYGON_MUMBAI.address,
+    [SupportedChainId.POLYGON_MUMBAI]: USDC_MUMBAI.address,
     [SupportedChainId.CELO]: PORTAL_USDC_CELO.address,
     [SupportedChainId.CELO_ALFAJORES]: PORTAL_USDC_CELO.address,
     [SupportedChainId.GOERLI]: USDC_GOERLI.address,
