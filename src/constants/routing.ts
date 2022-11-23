@@ -175,7 +175,7 @@ export const COMMON_BASES: ChainCurrencyList = {
   [SupportedChainId.POLYGON_MUMBAI]: [
     nativeOnChain(SupportedChainId.POLYGON_MUMBAI),
     WRAPPED_NATIVE_CURRENCY[SupportedChainId.POLYGON_MUMBAI] as Token,
-    WETH_POLYGON_MUMBAI,
+    // WETH_POLYGON_MUMBAI,
   ],
 
   [SupportedChainId.CELO]: [

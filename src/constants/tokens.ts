@@ -395,8 +395,8 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     SupportedChainId.POLYGON_MUMBAI,
     '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889',
     18,
-    'WMATIC',
-    'Wrapped MATIC'
+    'WETH',
+    'Wrapped ETH'
   ),
 }
 

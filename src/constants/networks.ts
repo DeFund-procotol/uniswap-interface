@@ -106,7 +106,8 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
     ...FALLBACK_URLS[SupportedChainId.POLYGON],
   ],
   [SupportedChainId.POLYGON_MUMBAI]: [
-    `https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`,
+    // `https://polygon-mumbai.infura.io/v3/${INFURA_KEY}`,
+    'https://matic-mumbai.chainstacklabs.com',
     ...FALLBACK_URLS[SupportedChainId.POLYGON_MUMBAI],
   ],
   [SupportedChainId.CELO]: FALLBACK_URLS[SupportedChainId.CELO],
