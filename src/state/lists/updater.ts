@@ -5,6 +5,7 @@ import {
   ARBITRUM_LIST,
   CELO_LIST,
   DECONTRACTS_GOERLI_LIST,
+  DECONTRACTS_MUMBAI_LIST,
   OPTIMISM_LIST,
   UNSUPPORTED_LIST_URLS,
 } from 'constants/lists'
@@ -39,6 +40,9 @@ export default function Updater(): null {
   useEffect(() => {
     if (chainId && [SupportedChainId.GOERLI].includes(chainId)) {
       dispatch(enableList(DECONTRACTS_GOERLI_LIST))
+    }
+    if (chainId && [SupportedChainId.POLYGON_MUMBAI].includes(chainId)) {
+      dispatch(enableList(DECONTRACTS_MUMBAI_LIST))
     }
     if (chainId && [SupportedChainId.OPTIMISM, SupportedChainId.OPTIMISTIC_KOVAN].includes(chainId)) {
       dispatch(enableList(OPTIMISM_LIST))

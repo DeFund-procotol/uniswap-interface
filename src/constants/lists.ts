@@ -12,6 +12,7 @@
 // const WRAPPED_LIST = 'wrapped.tokensoft.eth'
 export const DECONTRACTS_LIST = 'https://raw.githubusercontent.com/Decontract/token-list/main/tokens.json'
 export const DECONTRACTS_GOERLI_LIST = 'https://raw.githubusercontent.com/Decontract/token-list/main/goerli.json'
+export const DECONTRACTS_MUMBAI_LIST = 'https://raw.githubusercontent.com/Decontract/token-list/main/mumbai.json'
 
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'

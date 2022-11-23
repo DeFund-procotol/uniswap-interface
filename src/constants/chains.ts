@@ -44,7 +44,7 @@ export function isSupportedChain(chainId: number | null | undefined): chainId is
 
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
   SupportedChainId.MAINNET,
-  // SupportedChainId.POLYGON,
+  SupportedChainId.POLYGON,
   // SupportedChainId.CELO,
   // SupportedChainId.OPTIMISM,
   // SupportedChainId.ARBITRUM_ONE,
@@ -61,7 +61,7 @@ export const UNSUPPORTED_V2POOL_CHAIN_IDS = [
 
 export const TESTNET_CHAIN_IDS = [
   SupportedChainId.GOERLI,
-  // SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.POLYGON_MUMBAI,
   // SupportedChainId.ARBITRUM_RINKEBY,
   // SupportedChainId.OPTIMISTIC_KOVAN,
 ] as const
@@ -74,8 +74,8 @@ export type SupportedTestnetChainId = typeof TESTNET_CHAIN_IDS[number]
 export const L1_CHAIN_IDS = [
   SupportedChainId.MAINNET,
   SupportedChainId.GOERLI,
-  // SupportedChainId.POLYGON,
-  // SupportedChainId.POLYGON_MUMBAI,
+  SupportedChainId.POLYGON,
+  SupportedChainId.POLYGON_MUMBAI,
   // SupportedChainId.CELO,
   // SupportedChainId.CELO_ALFAJORES,
 ] as const

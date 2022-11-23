@@ -6,7 +6,7 @@ import { useSingleContractMultipleData } from 'lib/hooks/multicall'
 import { useMemo } from 'react'
 
 import { useAllCurrencyCombinations } from './useAllCurrencyCombinations'
-import { useFundFilterContract } from './useContract'
+import { useFundManagerContract } from './useContract'
 import { PoolState, usePools } from './usePools'
 
 /**
@@ -49,7 +49,7 @@ export function useV3SwapPools(
     () => allCurrencyCombinationsWithAllFees.map((item) => [item[0].address, item[1].address, item[2]]),
     [allCurrencyCombinationsWithAllFees]
   )
-  const filter = useFundFilterContract()
+  const filter = useFundManagerContract()
   const allAllowed = useSingleContractMultipleData(filter, 'isPoolParamsAllowed', poolParams)
 
   const allowedCurrencyCombinationsWithAllFees = useMemo(
