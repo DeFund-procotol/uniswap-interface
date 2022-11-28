@@ -12,6 +12,8 @@ import { Text } from 'rebass'
 import styled from 'styled-components/macro'
 import { currencyId } from 'utils/currencyId'
 
+import { useAllEnabledTokens } from '../../hooks/Tokens'
+
 const MobileWrapper = styled(AutoColumn)`
   ${({ theme }) => theme.deprecated_mediaWidth.deprecated_upToSmall`
     display: none;
@@ -73,13 +75,17 @@ export default function CommonBases({
   isAddressSearch: string | false
 }) {
   const bases = typeof chainId !== 'undefined' ? COMMON_BASES[chainId] ?? [] : []
+  const allTokens = useAllEnabledTokens()
+  const enabledTokenAddress = Object.keys(allTokens)
+  const enabledBases = bases.filter((item: any) => enabledTokenAddress.includes(item.address))
+
   const redesignFlag = useRedesignFlag()
   const redesignFlagEnabled = redesignFlag === RedesignVariant.Enabled
 
   return bases.length > 0 ? (
     <MobileWrapper gap="md">
       <AutoRow gap="4px">
-        {bases.map((currency: Currency) => {
+        {enabledBases.map((currency: Currency) => {
           const isSelected = selectedCurrency?.equals(currency)
 
           return (
