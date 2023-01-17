@@ -7,23 +7,20 @@ import { updateMatchesDarkMode } from './reducer'
 export default function Updater(): null {
   const dispatch = useAppDispatch()
 
+  // keep dark mode in sync with the system
   useEffect(() => {
     const mode = parsedQueryString().mode
-    if (mode) dispatch(updateMatchesDarkMode({ matchesDarkMode: mode === 'dark' }))
-  })
+    if (mode !== 'auto') {
+      dispatch(updateMatchesDarkMode({ matchesDarkMode: mode === 'dark' }))
+      return
+    }
 
-  // keep dark mode in sync with the system
-  /*
-  useEffect(() => {
     const darkHandler = (match: MediaQueryListEvent) => {
       dispatch(updateMatchesDarkMode({ matchesDarkMode: match.matches }))
     }
 
     const match = window?.matchMedia('(prefers-color-scheme: dark)')
     dispatch(updateMatchesDarkMode({ matchesDarkMode: match.matches }))
-
-    const mode = parsedQueryString().mode
-    if (mode) dispatch(updateMatchesDarkMode({ matchesDarkMode: mode === 'dark' }))
 
     if (match?.addListener) {
       match?.addListener(darkHandler)
@@ -39,7 +36,6 @@ export default function Updater(): null {
       }
     }
   }, [dispatch])
-  */
 
   return null
 }
