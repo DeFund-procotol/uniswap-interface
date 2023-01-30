@@ -1,6 +1,8 @@
 import { SupportedChainId } from './chains'
 
 const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
+const BLASTAPI_KEY = process.env.REACT_APP_BLASTAPI_KEY
+
 if (typeof INFURA_KEY === 'undefined') {
   throw new Error(`REACT_APP_INFURA_KEY must be a defined environment variable`)
 }
@@ -22,7 +24,8 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
     'https://cloudflare-eth.com',
     // "Fallback" URLs
     'https://rpc.ankr.com/eth',
-    'https://eth-mainnet.public.blastapi.io',
+    // 'https://eth-mainnet.public.blastapi.io',
+    BLASTAPI_KEY ? `https://eth-mainnet.blastapi.io/${BLASTAPI_KEY}` : 'https://eth-mainnet.public.blastapi.io',
   ],
   [SupportedChainId.GOERLI]: [
     // "Safe" URLs
