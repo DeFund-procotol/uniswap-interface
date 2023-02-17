@@ -40,7 +40,7 @@ registerRoute(
     ({ url }) => assets.includes('.' + url.pathname),
     new CacheFirst({
       cacheName: 'assets',
-      plugins: [new ExpirationPlugin({ maxEntries: 16 })],
+      plugins: [new ExpirationPlugin({ maxEntries: 16, maxAgeSeconds: 3600 })],
     })
   )
 )
