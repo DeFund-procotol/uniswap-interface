@@ -1,5 +1,5 @@
 import store from '../state'
-import { DECONTRACTS_LIST } from './lists'
+import { DEFUND_LIST } from './lists'
 import brokenTokenList from './tokenLists/broken.tokenlist.json'
 import unsupportedTokenList from './tokenLists/unsupported.tokenlist.json'
 
@@ -16,8 +16,8 @@ class TokenSafetyLookupTable {
 
   createMap() {
     const dict: { [key: string]: TOKEN_LIST_TYPES } = {}
-    let uniDefaultTokens = store.getState().lists.byUrl[DECONTRACTS_LIST].current?.tokens
-    let uniExtendedTokens = store.getState().lists.byUrl[DECONTRACTS_LIST].current?.tokens
+    let uniDefaultTokens = store.getState().lists.byUrl[DEFUND_LIST].current?.tokens
+    let uniExtendedTokens = store.getState().lists.byUrl[DEFUND_LIST].current?.tokens
     const brokenTokens = brokenTokenList.tokens
     const unsupportTokens = unsupportedTokenList.tokens
 

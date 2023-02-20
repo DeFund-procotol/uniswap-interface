@@ -10,9 +10,9 @@
 // const ROLL_LIST = 'https://app.tryroll.com/tokens.json'
 // const SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
 // const WRAPPED_LIST = 'wrapped.tokensoft.eth'
-export const DECONTRACTS_LIST = 'https://raw.githubusercontent.com/Decontract/token-list/main/tokens.json'
-export const DECONTRACTS_GOERLI_LIST = 'https://raw.githubusercontent.com/Decontract/token-list/main/goerli.json'
-export const DECONTRACTS_MUMBAI_LIST = 'https://raw.githubusercontent.com/Decontract/token-list/main/mumbai.json'
+export const DEFUND_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/tokens.json'
+export const DEFUND_GOERLI_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/goerli.json'
+export const DEFUND_MUMBAI_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/mumbai.json'
 
 export const OPTIMISM_LIST = 'https://static.optimism.io/optimism.tokenlist.json'
 export const ARBITRUM_LIST = 'https://bridge.arbitrum.io/token-list-42161.json'
@@ -22,9 +22,9 @@ export const UNSUPPORTED_LIST_URLS: string[] = []
 
 // this is the default list of lists that are exposed to users
 // lower index == higher priority for token import
-// const DEFAULT_LIST_OF_LISTS_TO_DISPLAY: string[] = [UNI_LIST, UNI_EXTENDED_LIST, DECONTRACTS_LIST]
+// const DEFAULT_LIST_OF_LISTS_TO_DISPLAY: string[] = [UNI_LIST, UNI_EXTENDED_LIST, DEFUND_LIST]
 
-export const DEFAULT_LIST_OF_LISTS: string[] = [DECONTRACTS_LIST]
+export const DEFAULT_LIST_OF_LISTS: string[] = [DEFUND_LIST]
 
 // default lists to be 'active' aka searched across
-export const DEFAULT_ACTIVE_LIST_URLS: string[] = [DECONTRACTS_LIST]
+export const DEFAULT_ACTIVE_LIST_URLS: string[] = [DEFUND_LIST]

@@ -11,7 +11,7 @@ export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5
 export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap(V2_FACTORY_ADDRESS)
 export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D')
 
-export const DECONTRACTS_FUND_MANAGER_ADDRESS: AddressMap = {
+export const DEFUND_FUND_MANAGER_ADDRESS: AddressMap = {
   [SupportedChainId.MAINNET]: '0x22fCce8f007D61AA933e29f6dDf756d73B6F39F1',
   [SupportedChainId.GOERLI]: '0x4a9AE30F0F89AEA1ECB040c787305334bB39052b',
   [SupportedChainId.POLYGON_MUMBAI]: '0x588901c91009E18978369fB19FDbBa049509797E',
