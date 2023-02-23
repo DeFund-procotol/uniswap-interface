@@ -54,6 +54,21 @@ export default function useEagerlyConnect() {
   }, [])
 
   useEffect(() => {
+    async function messageListener(event: any) {
+      if (event.data?.target === 'decontracts' || event.data?.target === 'defund') {
+        if (event.data?.data?.name === 'disconnect' && localStorage.getItem('walletconnect')) {
+          localStorage.removeItem('walletconnect')
+          await walletConnectConnection.connector.deactivate()
+        }
+      }
+    }
+    window.addEventListener('message', messageListener)
+    return () => {
+      window.removeEventListener('message', messageListener)
+    }
+  }, [dispatch])
+
+  useEffect(() => {
     connect(networkConnection.connector)
 
     if (selectedConnection) {
