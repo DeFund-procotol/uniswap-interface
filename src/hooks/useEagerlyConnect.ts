@@ -6,6 +6,8 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'state/hooks'
 import { updateSelectedWallet } from 'state/user/reducer'
 
+import { parsedQueryString } from './useParsedQueryString'
+
 async function connect(connector: Connector) {
   try {
     if (connector.connectEagerly) {
@@ -20,7 +22,7 @@ async function connect(connector: Connector) {
 
 export default function useEagerlyConnect() {
   const dispatch = useAppDispatch()
-
+  const chainId = Number(parsedQueryString().chainId || '1')
   const selectedWallet = useAppSelector((state) => state.user.selectedWallet)
 
   let selectedConnection: Connection | undefined
@@ -30,8 +32,6 @@ export default function useEagerlyConnect() {
     } catch {
       dispatch(updateSelectedWallet({ wallet: undefined }))
     }
-  } else {
-    walletConnectConnection.connector.activate()
   }
 
   useEffect(() => {
@@ -56,9 +56,13 @@ export default function useEagerlyConnect() {
   useEffect(() => {
     async function messageListener(event: any) {
       if (event.data?.target === 'decontracts' || event.data?.target === 'defund') {
-        if (event.data?.data?.name === 'disconnect' && localStorage.getItem('walletconnect')) {
-          localStorage.removeItem('walletconnect')
-          await walletConnectConnection.connector.deactivate()
+        if (event.data?.data?.name === 'connect') {
+          const remoteKey = event.data.data.data.key
+          const localKey = JSON.parse(localStorage.getItem('walletconnect') || '{}').key
+          if (localKey && remoteKey !== localKey) {
+            console.debug('reconnect', remoteKey, localKey)
+            localStorage.removeItem('walletconnect')
+          }
         }
       }
     }
@@ -73,6 +77,8 @@ export default function useEagerlyConnect() {
 
     if (selectedConnection) {
       connect(selectedConnection.connector)
+    } else {
+      walletConnectConnection.connector.activate(chainId)
     } // The dependency list is empty so this is only run once on mount
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 }
