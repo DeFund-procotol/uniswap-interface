@@ -62,7 +62,6 @@ export default function useEagerlyConnect() {
           if (localKey && remoteKey !== localKey) {
             console.debug('reconnect', remoteKey, localKey)
             localStorage.removeItem('walletconnect')
-            walletConnectConnection.connector.activate(chainId)
           }
         }
       }
