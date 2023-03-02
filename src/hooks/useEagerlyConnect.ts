@@ -62,6 +62,7 @@ export default function useEagerlyConnect() {
           if (localKey && remoteKey !== localKey) {
             console.debug('reconnect', remoteKey, localKey)
             localStorage.removeItem('walletconnect')
+            walletConnectConnection.connector.activate(chainId)
           }
         }
       }
@@ -70,7 +71,7 @@ export default function useEagerlyConnect() {
     return () => {
       window.removeEventListener('message', messageListener)
     }
-  }, [dispatch])
+  }, [dispatch, chainId])
 
   useEffect(() => {
     connect(networkConnection.connector)
