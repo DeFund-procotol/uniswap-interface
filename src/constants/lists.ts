@@ -11,6 +11,7 @@
 // const SET_LIST = 'https://raw.githubusercontent.com/SetProtocol/uniswap-tokenlist/main/set.tokenlist.json'
 // const WRAPPED_LIST = 'wrapped.tokensoft.eth'
 export const DEFUND_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/tokens.json'
+export const DEFUND_POLYGON_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/polygon.json'
 export const DEFUND_GOERLI_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/goerli.json'
 export const DEFUND_MUMBAI_LIST = 'https://raw.githubusercontent.com/DeFund-procotol/token-list/main/mumbai.json'
 

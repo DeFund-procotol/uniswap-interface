@@ -6,6 +6,7 @@ import {
   CELO_LIST,
   DEFUND_GOERLI_LIST,
   DEFUND_MUMBAI_LIST,
+  DEFUND_POLYGON_LIST,
   OPTIMISM_LIST,
   UNSUPPORTED_LIST_URLS,
 } from 'constants/lists'
@@ -38,6 +39,9 @@ export default function Updater(): null {
   }, [fetchList, isWindowVisible, lists])
 
   useEffect(() => {
+    if (chainId && [SupportedChainId.POLYGON].includes(chainId)) {
+      dispatch(enableList(DEFUND_POLYGON_LIST))
+    }
     if (chainId && [SupportedChainId.GOERLI].includes(chainId)) {
       dispatch(enableList(DEFUND_GOERLI_LIST))
     }
