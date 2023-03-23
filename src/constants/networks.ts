@@ -36,7 +36,7 @@ export const FALLBACK_URLS: { [key in SupportedChainId]: string[] } = {
   [SupportedChainId.POLYGON]: [
     // "Safe" URLs
     'https://polygon-rpc.com/',
-    // 'https://rpc-mainnet.matic.network',
+    'https://rpc-mainnet.matic.network',
     'https://matic-mainnet.chainstacklabs.com',
     'https://rpc-mainnet.maticvigil.com',
     'https://rpc-mainnet.matic.quiknode.pro',
@@ -106,7 +106,7 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
   ],
   [SupportedChainId.POLYGON]: [
     // `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
-    'https://polygon-rpc.com',
+    BLASTAPI_KEY ? `https://polygon-mainnet.blastapi.io/${BLASTAPI_KEY}` : 'https://polygon-mainnet.public.blastapi.io',
     ...FALLBACK_URLS[SupportedChainId.POLYGON],
   ],
   [SupportedChainId.POLYGON_MUMBAI]: [
