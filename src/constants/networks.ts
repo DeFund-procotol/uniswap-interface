@@ -1,6 +1,7 @@
 import { SupportedChainId } from './chains'
 
 const INFURA_KEY = process.env.REACT_APP_INFURA_KEY
+const ALCHEMY_KEY = process.env.REACT_APP_ALCHEMY_KEY
 const BLASTAPI_KEY = process.env.REACT_APP_BLASTAPI_KEY
 
 if (typeof INFURA_KEY === 'undefined') {
@@ -105,7 +106,7 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
     ...FALLBACK_URLS[SupportedChainId.ARBITRUM_RINKEBY],
   ],
   [SupportedChainId.POLYGON]: [
-    // `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
+    `https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}`,
     BLASTAPI_KEY ? `https://polygon-mainnet.blastapi.io/${BLASTAPI_KEY}` : 'https://polygon-mainnet.public.blastapi.io',
     ...FALLBACK_URLS[SupportedChainId.POLYGON],
   ],
