@@ -105,7 +105,8 @@ export const RPC_URLS: { [key in SupportedChainId]: string[] } = {
     ...FALLBACK_URLS[SupportedChainId.ARBITRUM_RINKEBY],
   ],
   [SupportedChainId.POLYGON]: [
-    `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
+    // `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
+    'https://polygon-rpc.com',
     ...FALLBACK_URLS[SupportedChainId.POLYGON],
   ],
   [SupportedChainId.POLYGON_MUMBAI]: [
