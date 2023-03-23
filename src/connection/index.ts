@@ -59,6 +59,7 @@ const [web3WalletConnect, web3WalletConnectHooks] = initializeConnector<WalletCo
         rpc: {
           1: RPC_URLS[SupportedChainId.MAINNET],
           5: RPC_URLS[SupportedChainId.GOERLI],
+          137: RPC_URLS[SupportedChainId.POLYGON],
           80001: RPC_URLS[SupportedChainId.POLYGON_MUMBAI],
         },
         qrcode: true,
